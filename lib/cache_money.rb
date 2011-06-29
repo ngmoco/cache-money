@@ -24,7 +24,7 @@ require 'cash/util/marshal'
 
 class ActiveRecord::Base
   def self.is_cached(options = {})
-    if options == false
+    if (options == false || options[:repository].nil?)
       include NoCash
     else
       options.assert_valid_keys(:ttl, :repository, :version)
