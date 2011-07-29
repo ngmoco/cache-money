@@ -19,31 +19,7 @@ rescue MissingSourceFile
   exit 1
 end
 
-jt = Jeweler::Tasks.new do |gem|
-  gem.name = "ngmoco-cache-money"
-  gem.summary = "Write-through and Read-through Cacheing for ActiveRecord"
-  gem.description = "Write-through and Read-through Cacheing for ActiveRecord"
-  gem.email = "teamplatform@ngmoco.com"
-  gem.homepage = "http://github.com/ngmoco/cache-money"
-  gem.authors = ["Nick Kallen","Ashley Martens","Scott Mace","John O'Neill"]
-  gem.has_rdoc = false
-  gem.files    = FileList[
-    "README",
-    "TODO",
-    "UNSUPPORTED_FEATURES",
-    "lib/**/*.rb",
-    "rails/init.rb",
-    "init.rb"
-  ]
-  gem.test_files = FileList[
-    "config/*",
-    "db/schema.rb",
-    "spec/**/*.rb"
-  ]
-  gem.add_dependency("activerecord", [">= 2.2.0"])
-  gem.add_dependency("activesupport", [">= 2.2.0"])
-end
-Jeweler::GemcutterTasks.new
+require 'lib/cash/version'
 
 Spec::Rake::SpecTask.new do |t|
   t.spec_files = FileList['spec/**/*_spec.rb']
@@ -69,9 +45,9 @@ end
 
 desc "Push a new version to Gemcutter"
 task :publish => [ :spec, :build ] do
-  system "git tag v#{jt.jeweler.version}"
-  system "git push origin v#{jt.jeweler.version}"
+  system "git tag v#{Cash::VERSION}"
+  system "git push origin v#{Cash::VERSION}"
   system "git push origin master"
-  system "gem push pkg/ngmoco-cache-money-#{jt.jeweler.version}.gem"
+  system "gem push pkg/ngmoco-cache-money-#{Cash::VERSION}.gem"
   system "git clean -fd"
 end

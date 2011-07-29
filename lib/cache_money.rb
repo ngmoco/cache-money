@@ -1,6 +1,7 @@
 require 'active_support'
 require 'active_record'
 
+require 'cash/version'
 require 'cash/lock'
 require 'cash/transactional'
 require 'cash/write_through'
