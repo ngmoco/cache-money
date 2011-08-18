@@ -29,7 +29,12 @@ Spec::Runner.configure do |config|
       require 'fakeredis'
       $memcache = Cash::Adapter::Redis.new(FakeRedis::Redis.new(),
         :default_ttl => 1.minute.to_i)
-      
+    when 'mock'
+      # Test with Mock client
+      require 'cash/adapter/memcache_client'
+      require 'cash/mock'
+      $memcache = Cash::Adapter::MemcacheClient.new(Cash::Mock.new(),
+        :default_ttl => 1.minute.to_i)
     else
       require 'cash/adapter/memcached'
       # Test with memcached client

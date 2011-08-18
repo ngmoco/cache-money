@@ -20,7 +20,7 @@ module Cash
           @value = Marshal.dump(value)
         end
         
-        if ttl.zero?
+        if ttl.nil? || ttl.zero?
           @ttl = self.class.default_ttl
         else
           @ttl = ttl
@@ -68,18 +68,22 @@ module Cash
     end
 
     def get(key, raw = false)
-      log "< get #{key}"
-      unless self.has_unexpired_key?(key)
-        log('> END')
-        return nil
-      end
-      
-      log("> sending key #{key}")
-      log('> END')
-      if raw
-        self[key].value
+      if key.is_a?(Array)
+        get_multi(*key)
       else
-        self[key].unmarshal
+        log "< get #{key}"
+        unless self.has_unexpired_key?(key)
+          log('> END')
+          return nil
+        end
+        
+        log("> sending key #{key}")
+        log('> END')
+        if raw
+          self[key].value
+        else
+          self[key].unmarshal
+        end
       end
     end
     
