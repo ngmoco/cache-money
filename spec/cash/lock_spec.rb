@@ -50,7 +50,7 @@ module Cash
         it "correctly sets timeout on memcache entries" do
           mock($memcache).add('lock/lock_key', "#{Socket.gethostname} #{Process.pid}", timeout = 10) { true }
           # lock.acquire_lock('lock_key', timeout)
-          lambda { lock.acquire_lock('lock_key', timeout, 1) }.should raise_error
+          lambda { lock.acquire_lock('lock_key', timeout, 1) }.should raise_error(Cash::Lock::Error)
         end
       end
 
@@ -59,7 +59,7 @@ module Cash
           lock.acquire_lock('lock_key')
           as_another_process do
             stub(lock).exponential_sleep
-            lambda { lock.acquire_lock('lock_key') }.should raise_error
+            lambda { lock.acquire_lock('lock_key') }.should raise_error(Cash::Lock::Error)
           end
         end
         
@@ -69,7 +69,7 @@ module Cash
             as_another_process do
               mock($memcache).add("lock/lock_key", "#{Socket.gethostname} #{Process.pid}", timeout = 10) { false }.times(retries = 3)
               stub(lock).exponential_sleep
-              lambda { lock.acquire_lock('lock_key', timeout, retries) }.should raise_error
+              lambda { lock.acquire_lock('lock_key', timeout, retries) }.should raise_error(Cash::Lock::Error) 
             end
           end
         end

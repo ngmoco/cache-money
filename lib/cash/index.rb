@@ -126,7 +126,7 @@ module Cash
           (a <=> b) * (order == :asc ? 1 : -1)
         end.uniq
         objects = truncate_if_necessary(objects)
-        set(key, objects, :ttl => ttl)
+        set(key, objects, :ttl => ttl)        
         incr("#{key}/count") { calculate_at_index(:count, attribute_value_pairs) }
       end
     end

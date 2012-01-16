@@ -65,6 +65,10 @@ module Cash
         end
       end
       
+      def get_server_for_key(key)
+        wrap(key) { @repository.server_by_key(key) }
+      end
+
       def incr(key, value = 1)
         wrap(key) { @repository.incr(key, value) }
       end

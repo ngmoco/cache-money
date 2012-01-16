@@ -72,7 +72,15 @@ module Cash
           deleted
         end
       end
-      
+            
+      def get_server_for_key(key)
+        wrap(key) do
+          # Redis::Distributed has a node_for method. 
+          client = @repository.respond_to?(:node_for) ? @repository.node_for(key) : @repository.client
+          client.id
+        end
+      end
+
       def incr(key, value = 1)
         # Redis always answeres positively to incr/decr but memcache does not and waits for the key
         # to be added in a separate operation.
