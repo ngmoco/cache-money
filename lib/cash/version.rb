@@ -1,3 +1,3 @@
 module Cash
-  VERSION = '0.2.24.1'
+  VERSION = '0.2.24.2'
 end
