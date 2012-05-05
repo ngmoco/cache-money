@@ -10,11 +10,11 @@ module Cash
       end
 
       def add(key, value, ttl=nil, raw=false)
-        @repository.add(key, value || @default_ttl, ttl, raw)
+        @repository.add(key, value, ttl || @default_ttl, raw)
       end
       
       def set(key, value, ttl=nil, raw=false)
-        @repository.set(key, value || @default_ttl, ttl, raw)
+        @repository.set(key, value, ttl || @default_ttl, raw)
       end
       
       def exception_classes
