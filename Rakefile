@@ -41,6 +41,6 @@ task :publish => [ :spec, :build ] do
   system "git tag v#{Cash::VERSION}"
   system "git push origin v#{Cash::VERSION}"
   system "git push origin master"
-  system "gem push pkg/ngmoco-cache-money-#{Cash::VERSION}.gem"
+  system "gem push pkg/eliasbaixas-cache-money-#{Cash::VERSION}.gem"
   system "git clean -fd"
 end

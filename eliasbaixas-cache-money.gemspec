@@ -2,14 +2,14 @@
 require File.join(File.dirname(__FILE__), 'lib/cash/version')
 
 Gem::Specification.new do |s|
-  s.name = %q{ngmoco-cache-money}
+  s.name = %q{eliasbaixas-cache-money}
   s.version = Cash::VERSION
 
   s.required_rubygems_version = '1.3.7'
   s.authors = ["Nick Kallen", "Ashley Martens", "Scott Mace", "John O'Neill"]
   s.date = Date.today.to_s
   s.description = %q{Write-through and Read-through Cacheing for ActiveRecord}
-  s.email = %q{teamplatform@ngmoco.com}
+  s.email = %q{elias@eresmas.net}
   s.extra_rdoc_files = [
     "LICENSE",
     "README",
@@ -24,7 +24,7 @@ Gem::Specification.new do |s|
     "rails/init.rb",
     "init.rb"
   ]
-  s.homepage = %q{http://github.com/ngmoco/cache-money}
+  s.homepage = %q{http://github.com/eliasbaixas/cache-money}
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.7}
   s.summary = %q{Write-through and Read-through Cacheing for ActiveRecord}
