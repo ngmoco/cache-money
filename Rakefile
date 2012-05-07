@@ -35,12 +35,15 @@ namespace :britt do
   end
 end
 
+task :build do
+  system "gem build ngmoco-cache-money.gemspec"
+end
 
 desc "Push a new version to Gemcutter"
 task :publish => [ :spec, :build ] do
   system "git tag v#{Cash::VERSION}"
   system "git push origin v#{Cash::VERSION}"
   system "git push origin master"
-  system "gem push pkg/ngmoco-cache-money-#{Cash::VERSION}.gem"
+  system "gem push ngmoco-cache-money-#{Cash::VERSION}.gem"
   system "git clean -fd"
 end

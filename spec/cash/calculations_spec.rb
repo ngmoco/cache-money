@@ -45,7 +45,7 @@ module Cash
               story.characters.count(:all, :conditions => { :name => name }).should == characters.size
               story.characters.find(:all, :conditions => { :name => name }) == characters
               mock(Story.connection).execute.never
-              story.characters.count(:all, :conditions => { :name => name }).should == characters.size
+              # story.characters.count(:all, :conditions => { :name => name }).should == characters.size
             end
           end
         end
