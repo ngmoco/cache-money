@@ -5,7 +5,7 @@ Gem::Specification.new do |s|
   s.name = %q{ngmoco-cache-money}
   s.version = Cash::VERSION
 
-  s.required_rubygems_version = '1.3.7'
+  s.required_rubygems_version = '>= 1.3.7'
   s.authors = ["Nick Kallen", "Ashley Martens", "Scott Mace", "John O'Neill"]
   s.date = Date.today.to_s
   s.description = %q{Write-through and Read-through Cacheing for ActiveRecord}
@@ -26,7 +26,6 @@ Gem::Specification.new do |s|
   ]
   s.homepage = %q{http://github.com/ngmoco/cache-money}
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.3.7}
   s.summary = %q{Write-through and Read-through Cacheing for ActiveRecord}
   s.test_files = Dir[
     "config/*",
@@ -36,7 +35,7 @@ Gem::Specification.new do |s|
 
   s.add_runtime_dependency(%q<activerecord>, [">= 2.2.0", "< 3.0"])
   s.add_runtime_dependency(%q<activesupport>, [">= 2.2.0", "< 3.0"])
-  
+
   s.add_development_dependency(%q<rake>)
   s.add_development_dependency(%q<ruby-debug>, ["~> 0.10.0"])
   s.add_development_dependency(%q<rspec>, ["~> 1.3.0"])
@@ -44,6 +43,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency(%q<rr>)
   s.add_development_dependency(%q<memcached>)
   s.add_development_dependency(%q<memcache-client>)
-  s.add_development_dependency(%q<fakeredis>) 
+  s.add_development_dependency(%q<fakeredis>)
 end
 
