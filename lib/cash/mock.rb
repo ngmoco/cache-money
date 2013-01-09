@@ -57,7 +57,7 @@ module Cash
       @logging = false
     end
     
-    def get_multi(keys)
+    def get_multi(*keys)
       slice(*keys).collect { |k,v| [k, v.unmarshal] }.to_hash_without_nils
     end
 
