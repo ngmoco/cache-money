@@ -25,6 +25,7 @@ Gem::Specification.new do |s|
     "init.rb"
   ]
   s.homepage = %q{http://github.com/ngmoco/cache-money}
+  s.license = "Apache 2.0"
   s.require_paths = ["lib"]
   s.summary = %q{Write-through and Read-through Cacheing for ActiveRecord}
   s.test_files = Dir[
